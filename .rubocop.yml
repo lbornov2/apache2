@@ -1,26 +1,24 @@
 AllCops:
+  Include:
+    - metadata.rb
+    - attributes/**/*
+    - recipes/**/*
+    - libraries/**/*
+    - providers/**/*
+    - resources/**/*
   Exclude:
-    - vendor/**/*
-    - ruby/**/*
     - test/**/*
-    - files/**/*
-    - .kitchen/**/*
+    - vendor/**/*
+    - libraries/artifactory*
+    - Gemfile
+  
+Metrics/LineLength:
+  Max: 120
+Metrics/MethodLength:
+  Max: 14
 
-AlignParameters:
-  Enabled: false
 Encoding:
-  Enabled: false
-UselessAssignment:
-  Enabled: false
-LineLength:
-  Max: 300
-MethodLength:
-  Max: 11
-HashSyntax:
-  EnforcedStyle: hash_rockets
-IfUnlessModifier:
-  Enabled: false
-TrivialAccessors:
-  ExactNameMatch: true
-Style/RegexpLiteral:
-  Enabled: false
+  Exclude:
+    - metadata.rb
+    - Gemfile
+    - knfife.circle.rb
