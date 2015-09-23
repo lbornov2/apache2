@@ -15,4 +15,15 @@
 <% end -%>
   #   </Location>
   #</IfModule>
+  
+  <% if node['apache']['balancer_nodes'] -%>
+  	<% node['apache']['balancer_nodes'].each do |node| -%>
+  		<Proxy balancer://<%= node[:cluster_name] %> >
+  			<% node[:members].each do |member| -%>
+				BalancerMember <%= member %>
+			<% end -%>
+		</Proxy>
+		ProxyPass <%= node[:url] %> balancer://<%= node[:cluster_name] %>		
+  	<% end -%>
+  <% end -%>
 </IfModule>

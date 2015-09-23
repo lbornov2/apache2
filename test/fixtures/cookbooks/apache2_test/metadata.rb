@@ -30,6 +30,7 @@ recipe           'apache2_test::mod_php5', 'Test example for hosting a PHP appli
 recipe           'apache2_test::mod_python', 'Test example for hosting a Python application'
 recipe           'apache2_test::mod_ssl', 'Test example for SSL'
 recipe           'apache2_test::mod_status_remote', 'Test example for viewing server status'
+recipe           'apache2_test::mod_proxy_balancer', 'Test example for Proxy Balancer'
 
 %w{centos ubuntu}.each do |os|
   supports os
