@@ -1,0 +1,22 @@
+machine:
+  services:
+    - docker
+  ruby:
+    version: 2.1.2
+  environment:
+    VAGRANT_DEFAULT_PROVIDER: docker
+    
+dependencies:
+  bundler:
+    without: [production,  kitchen_vagrant, kitchen_cloud, development  ] 
+  pre:
+    - /bin/sh ci/setup.sh
+  cache_directories:
+    - ./chefdk_0.2.2-1_amd64.deb
+  override:
+    - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3:
+        timeout: 900
+
+test:
+  pre:
+    - /bin/sh ci/run.sh
