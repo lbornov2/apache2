@@ -4,7 +4,7 @@ set -e
 set -x 
 
 git config --global user.name $CIRCLE_USERNAME
-git config --global user.email "sysuser@openiam.com" 
+git config --global user.email $CIRCLE_EMAIL
 wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.2.2-1_amd64.deb;
 sudo dpkg -i chefdk_0.2.2-1_amd64.deb;
 mkdir ~/.chef
